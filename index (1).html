@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LÀNG NGỌNG | Minecraft Server</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top,#1a0005,#000),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,215,0,.03) 0px,
+      rgba(255,215,0,.03) 2px,
+      transparent 2px,
+      transparent 6px
+    );
+  color:#fff;
+  overflow-x:hidden;
+}
+  
+.confetti{
+  position:fixed;
+  top:-10px;
+  width:8px;
+  height:14px;
+  background:gold;
+  opacity:.8;
+  animation:fall linear infinite;
+}
+.confetti.red{background:#ff3c3c}
+.confetti.yellow{background:#ffd700}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+  }
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:60px 20px;
+}
+.hero{
+  text-align:center;
+  margin-bottom:80px;
+}
+.hero h1{
+  font-size:3.5rem;
+  letter-spacing:2px;
+}
+.hero span{
+  color:#ffd700;
+  text-shadow:0 0 12px rgba(255,215,0,.6);
+}
+.hero p{
+  color:#ddd;
+  margin-top:15px;
+  font-size:1.2rem;
+}
+.hero .ip{
+  margin-top:35px;
+  display:inline-block;
+  padding:18px 30px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#b30000,#ff3c3c);
+  border:1px solid #ff8080;
+  font-size:1.3rem;
+  cursor:pointer;
+  transition:.2s;
+}
+.hero .ip:hover{
+  transform:scale(1.05);
+}
+#player-status{
+  margin-top:15px;
+  font-size:1.1rem;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+.card{
+  background:rgba(20,0,0,.8);
+  border:1px solid #331111;
+  border-radius:20px;
+  padding:25px;
+  transition:.25s;
+}
+.card:hover{
+  transform:translateY(-6px);
+  border-color:#ffd700;
+}
+.card h3{
+  margin-bottom:12px;
+  color:#ffd700;
+}
+.card p{
+  color:#ddd;
+  line-height:1.6;
+}
+
+.actions{
+  margin-top:70px;
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.btn{
+  padding:16px 30px;
+  border-radius:50px;
+  font-weight:600;
+  color:#000;
+  background:linear-gradient(135deg,#ffd700,#ffb300);
+  border:none;
+  cursor:pointer;
+  transition:.2s;
+}
+.btn.alt{
+  background:#111;
+  color:#ffd700;
+  border:1px solid #ffd700;
+}
+.btn:hover{
+  transform:scale(1.06);
+}
+
+footer{
+  margin-top:80px;
+  text-align:center;
+  color:#aaa;
+  font-size:.9rem;
+}
+</style>
+</head>
+<body>
+
+<script>
+for(let i=0;i<40;i++){
+  const c=document.createElement("div");
+  c.className="confetti "+(Math.random()>0.5?"red":"yellow");
+  c.style.left=Math.random()*100+"vw";
+  c.style.animationDuration=3+Math.random()*5+"s";
+  c.style.opacity=Math.random();
+  document.body.appendChild(c);
+}
+</script>
+
+<div class="container">
+
+  <div class="hero">
+    <h1>LÀNG <span>NGỌNG</span> 🧧</h1>
+    <p>Server Minecraft cộng đồng • Vui vẻ • Đón Tết cùng nhau</p>
+
+    <div class="ip" onclick="navigator.clipboard.writeText('play.axolotlmc.site:25005')">
+      🎮 play.axolotlmc.site:25005
+    </div>
+
+    <div id="player-status">⏳ Đang lấy trạng thái server...</div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>🌸 Sinh tồn</h3>
+      <p>Survival thuần, chơi lâu dài, không pay to win.</p>
+    </div>
+
+    <div class="card">
+      <h3>🧧 Cộng đồng</h3>
+      <p>Vui vẻ – thân thiện – Tết không toxic.</p>
+    </div>
+
+    <div class="card">
+      <h3>🎇 Event Tết</h3>
+      <p>Event đặc biệt, quà xuân, lì xì ingame.</p>
+    </div>
+
+    <div class="card">
+      <h3>🛡️ Anti-Hack</h3>
+      <p>Chơi sạch để năm mới chơi dài.</p>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn" onclick="navigator.clipboard.writeText('play.axolotlmc.site:25005')">
+      🚀 Vào server
+    </button>
+    <button class="btn alt" onclick="window.open('https://discord.gg/yupujqzx','_blank')">
+      💬 Discord
+    </button>
+  </div>
+
+  <footer>
+    © 2025 Làng Ngọng Server • Chúc mừng năm mới 🐉
+  </footer>
+
+</div>
+
+<script>
+const serverIP="play.axolotlmc.site";
+const serverPort="25005";
+
+async function fetchPlayerCount(){
+  try{
+    const res=await fetch(`https://api.mcsrvstat.us/2/${serverIP}:${serverPort}`);
+    const data=await res.json();
+    const el=document.getElementById("player-status");
+
+    if(!data.online){
+      el.innerHTML="🔴 Server offline";
+      el.style.color="#ff5555";
+      return;
+    }
+
+    el.innerHTML=`🟢 Online: <b>${data.players.online}</b> / ${data.players.max} người chơi`;
+    el.style.color="#55ff99";
+  }catch{
+    document.getElementById("player-status").innerText="⚠️ Không lấy được dữ liệu server";
+  }
+}
+fetchPlayerCount();
+setInterval(fetchPlayerCount,30000);
+</script>
+
+</body>
+</html>
+
