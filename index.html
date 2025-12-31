@@ -9,6 +9,7 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+
 body{
   min-height:100vh;
   background:
@@ -29,7 +30,6 @@ body{
   top:-10px;
   width:8px;
   height:14px;
-  background:gold;
   opacity:.8;
   animation:fall linear infinite;
 }
@@ -37,9 +37,7 @@ body{
 .confetti.yellow{background:#ffd700}
 
 @keyframes fall{
-  to{
-    transform:translateY(110vh) rotate(360deg);
-  }
+  to{transform:translateY(110vh) rotate(360deg);}
 }
 
 .container{
@@ -47,6 +45,7 @@ body{
   margin:auto;
   padding:60px 20px;
 }
+
 .hero{
   text-align:center;
   margin-bottom:80px;
@@ -71,13 +70,14 @@ body{
   border-radius:14px;
   background:linear-gradient(135deg,#b30000,#ff3c3c);
   border:1px solid #ff8080;
-  font-size:1.3rem;
+  font-size:1.2rem;
   cursor:pointer;
   transition:.2s;
 }
 .hero .ip:hover{
   transform:scale(1.05);
 }
+
 #player-status{
   margin-top:15px;
   font-size:1.1rem;
@@ -111,14 +111,18 @@ body{
 .actions{
   margin-top:70px;
   display:flex;
-  gap:20px;
+  gap:18px;
   justify-content:center;
-  flex-wrap:wrap;
+  align-items:center;
+  flex-wrap:nowrap;
 }
+
 .btn{
   padding:16px 30px;
   border-radius:50px;
   font-weight:600;
+  min-width:160px;
+  text-align:center;
   color:#000;
   background:linear-gradient(135deg,#ffd700,#ffb300);
   border:none;
@@ -162,30 +166,28 @@ for(let i=0;i<40;i++){
     <p>Server Minecraft cộng đồng • Vui vẻ • Đón Tết cùng nhau</p>
 
     <div class="ip" onclick="navigator.clipboard.writeText('viemineday1.mcsh.io')">
-      🎮 Viemineday Cụm Sinh Tồn (nhấn vào đây để copy ip)
+      🎮 Viemineday Cụm Sinh Tồn (nhấn để copy IP)
     </div>
 
     <div id="player-status">⏳ Đang lấy trạng thái server...</div>
   </div>
+
   <div class="grid">
     <div class="card">
       <h3>🌸 Sinh tồn</h3>
       <p>Survival thuần, chơi lâu dài, không pay to win.</p>
     </div>
-
     <div class="card">
       <h3>🧧 Cộng đồng</h3>
       <p>Vui vẻ – thân thiện.</p>
     </div>
-
     <div class="card">
       <h3>🎇 Event Tết</h3>
       <p>Event đặc biệt, quà xuân, lì xì ingame.</p>
     </div>
-
     <div class="card">
       <h3>🛡️ Anti-Hack</h3>
-      <p>Chơi Game Nói Không Với Hack</p>
+      <p>Chơi Game Nói Không Với Hack.</p>
     </div>
   </div>
 
@@ -201,18 +203,19 @@ for(let i=0;i<40;i++){
     <button class="btn alt" onclick="window.location.href='guide.html'">
       📘 Xem hướng dẫn
     </button>
+
+    <button class="btn alt" onclick="window.open('https://www.mediafire.com/file/1s1sw7ieab5ku55/modclient.zip/file','_blank')">
+      📥 Tải mod
+    </button>
   </div>
 
- <button class="btn alt" onclick="window.open('https://www.mediafire.com/file/1s1sw7ieab5ku55/modclient.zip/file','_blank')">
-    📥 Tải mod
-  </button>
-  
   <footer>
     © 2025 VieMineDay Cụm Máy Chủ Sinh Tồn • Chúc mừng năm mới 🐉
   </footer>
 
 </div>
 
+<!-- PLAYER COUNT -->
 <script>
 const serverIP="viemineday1.mcsh.io";
 const serverPort="25565";
@@ -241,8 +244,3 @@ setInterval(fetchPlayerCount,30000);
 
 </body>
 </html>
-
-
-
-
-
