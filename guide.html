@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hướng dẫn cài mod | VieMineDay</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top,#1a0005,#000),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,215,0,.03) 0px,
+      rgba(255,215,0,.03) 2px,
+      transparent 2px,
+      transparent 6px
+    );
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* pháo giấy */
+.confetti{
+  position:fixed;
+  top:-10px;
+  width:8px;
+  height:14px;
+  background:gold;
+  opacity:.8;
+  animation:fall linear infinite;
+}
+.confetti.red{background:#ff3c3c}
+.confetti.yellow{background:#ffd700}
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg)}
+}
+
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:60px 20px;
+}
+
+h1{
+  text-align:center;
+  font-size:3rem;
+  color:#ffd700;
+  text-shadow:0 0 12px rgba(255,215,0,.6);
+}
+.subtitle{
+  text-align:center;
+  margin-top:15px;
+  color:#ddd;
+}
+
+.video{
+  margin-top:40px;
+  position:relative;
+  padding-top:56.25%;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid #331111;
+  background:#000;
+}
+.video iframe,
+.video video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+
+.box{
+  margin-top:40px;
+  background:rgba(20,0,0,.85);
+  border:1px solid #331111;
+  border-radius:20px;
+  padding:30px;
+}
+.box h2{
+  color:#ffd700;
+  margin-bottom:15px;
+}
+.box li{
+  margin-bottom:10px;
+  color:#ddd;
+}
+
+.actions{
+  margin-top:50px;
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+button{
+  padding:16px 30px;
+  border-radius:50px;
+  font-weight:600;
+  border:none;
+  cursor:pointer;
+  transition:.2s;
+}
+.btn-main{
+  background:linear-gradient(135deg,#ffd700,#ffb300);
+  color:#000;
+}
+.btn-alt{
+  background:#111;
+  color:#ffd700;
+  border:1px solid #ffd700;
+}
+button:hover{
+  transform:scale(1.06);
+}
+
+footer{
+  margin-top:70px;
+  text-align:center;
+  color:#aaa;
+  font-size:.9rem;
+}
+</style>
+</head>
+<body>
+
+<script>
+for(let i=0;i<35;i++){
+  const c=document.createElement("div");
+  c.className="confetti "+(Math.random()>0.5?"red":"yellow");
+  c.style.left=Math.random()*100+"vw";
+  c.style.animationDuration=3+Math.random()*5+"s";
+  c.style.opacity=Math.random();
+  document.body.appendChild(c);
+}
+</script>
+
+<div class="container">
+
+  <h1>📘 HƯỚNG DẪN CÀI MOD 🧧</h1>
+  <div class="subtitle">
+    Xem kỹ video bên dưới để vào server VieMineDay không lỗi
+  </div>
+
+  <!-- 🎥 VIDEO -->
+  <!-- KHUYÊN DÙNG: YOUTUBE -->
+  <div class="video">
+    <iframe
+      src="https://www.youtube.com/embed/VIDEO_ID"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- HOẶC VIDEO TRONG GITHUB (NẶNG HƠN) -->
+  <!--
+  <div class="video">
+    <video controls>
+      <source src="https://raw.githubusercontent.com/USERNAME/REPO/main/huongdan.mp4" type="video/mp4">
+    </video>
+  </div>
+  -->
+
+  <div class="box">
+    <h2>🧩 Các bước cài nhanh</h2>
+    <ol>
+      <li>Tải modpack theo link admin cung cấp</li>
+      <li>Cài Fabric / Forge đúng phiên bản server</li>
+      <li>Chép toàn bộ mod vào thư mục <code>mods</code></li>
+      <li>Mở Minecraft và vào server VieMineDay</li>
+    </ol>
+  </div>
+
+  <div class="box">
+    <h2>⚠️ Lưu ý quan trọng</h2>
+    <ul>
+      <li>❌ Không đủ mod sẽ <b>không vào được server</b></li>
+      <li>✅ Đúng phiên bản Minecraft</li>
+      <li>🧠 Xem hết video nếu gặp lỗi</li>
+    </ul>
+  </div>
+
+  <div class="actions">
+    <button class="btn-main" onclick="window.location.href='index.html'">
+      ⬅ Quay lại trang chủ
+    </button>
+    <button class="btn-alt" onclick="window.open('https://direct-one.vercel.app','_blank')">
+      💬 Discord hỗ trợ
+    </button>
+  </div>
+
+  <footer>
+    © 2025 VieMineDay • Chúc mừng năm mới 🐉
+  </footer>
+
+</div>
+
+</body>
+</html>
