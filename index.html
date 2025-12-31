@@ -46,6 +46,7 @@ body{
   padding:60px 20px;
 }
 
+/* HERO */
 .hero{
   text-align:center;
   margin-bottom:80px;
@@ -70,7 +71,7 @@ body{
   border-radius:14px;
   background:linear-gradient(135deg,#b30000,#ff3c3c);
   border:1px solid #ff8080;
-  font-size:1.2rem;
+  font-size:1.1rem;
   cursor:pointer;
   transition:.2s;
 }
@@ -80,7 +81,7 @@ body{
 
 #player-status{
   margin-top:15px;
-  font-size:1.1rem;
+  font-size:1.05rem;
 }
 
 .grid{
@@ -116,7 +117,6 @@ body{
   align-items:center;
   flex-wrap:nowrap;
 }
-
 .btn{
   padding:16px 30px;
   border-radius:50px;
@@ -143,6 +143,51 @@ footer{
   text-align:center;
   color:#aaa;
   font-size:.9rem;
+}
+
+@media (max-width:768px){
+
+  .container{
+    padding:40px 16px;
+  }
+
+  .hero h1{
+    font-size:2.2rem;
+  }
+
+  .hero p{
+    font-size:1rem;
+  }
+
+  .hero .ip{
+    width:100%;
+    font-size:1rem;
+    padding:14px;
+  }
+
+  #player-status{
+    font-size:.95rem;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .actions{
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .btn{
+    width:100%;
+    min-width:unset;
+    padding:14px;
+    font-size:1rem;
+  }
+
+  footer{
+    font-size:.8rem;
+  }
 }
 </style>
 </head>
@@ -173,64 +218,36 @@ for(let i=0;i<40;i++){
   </div>
 
   <div class="grid">
-    <div class="card">
-      <h3>🌸 Sinh tồn</h3>
-      <p>Survival thuần, chơi lâu dài, không pay to win.</p>
-    </div>
-    <div class="card">
-      <h3>🧧 Cộng đồng</h3>
-      <p>Vui vẻ – thân thiện.</p>
-    </div>
-    <div class="card">
-      <h3>🎇 Event Tết</h3>
-      <p>Event đặc biệt, quà xuân, lì xì ingame.</p>
-    </div>
-    <div class="card">
-      <h3>🛡️ Anti-Hack</h3>
-      <p>Chơi Game Nói Không Với Hack.</p>
-    </div>
+    <div class="card"><h3>🌸 Sinh tồn</h3><p>Survival thuần, chơi lâu dài.</p></div>
+    <div class="card"><h3>🧧 Cộng đồng</h3><p>Vui vẻ – thân thiện.</p></div>
+    <div class="card"><h3>🎇 Event Tết</h3><p>Event đặc biệt, lì xì ingame.</p></div>
+    <div class="card"><h3>🛡️ Anti-Hack</h3><p>Nói không với hack.</p></div>
   </div>
 
   <div class="actions">
-    <button class="btn" onclick="navigator.clipboard.writeText('namnguynx.mcsh.io')">
-      🚀 Vào server
-    </button>
-
-    <button class="btn alt" onclick="window.open('https://discurd.vercel.app/','_blank')">
-      💬 Discord
-    </button>
-
-    <button class="btn alt" onclick="window.location.href='guide.html'">
-      📘 Xem hướng dẫn
-    </button>
-
-    <button class="btn alt" onclick="window.open('https://www.mediafire.com/file/1s1sw7ieab5ku55/modclient.zip/file','_blank')">
-      📥 Tải mod
-    </button>
+    <button class="btn" onclick="navigator.clipboard.writeText('namnguynx.mcsh.io')">🚀 Vào server</button>
+    <button class="btn alt" onclick="window.open('https://discurd.vercel.app/','_blank')">💬 Discord</button>
+    <button class="btn alt" onclick="window.location.href='guide.html'">📘 Xem hướng dẫn</button>
+    <button class="btn alt" onclick="window.open('https://www.mediafire.com/file/1s1sw7ieab5ku55/modclient.zip/file','_blank')">📥 Tải mod</button>
   </div>
 
-  <footer>
-    © 2025 VieMineDay Cụm Máy Chủ Sinh Tồn • Chúc mừng năm mới 🐉
-  </footer>
+  <footer>© 2025 VieMineDay • Chúc mừng năm mới 🐉</footer>
 
 </div>
 
 <script>
 const serverIP="viemineday1.mcsh.io";
 const serverPort="25565";
-
 async function fetchPlayerCount(){
   try{
     const res=await fetch(`https://api.mcsrvstat.us/2/${serverIP}:${serverPort}`);
     const data=await res.json();
     const el=document.getElementById("player-status");
-
     if(!data.online){
       el.innerHTML="🔴 Server offline";
       el.style.color="#ff5555";
       return;
     }
-
     el.innerHTML=`🟢 Online: <b>${data.players.online}</b> / ${data.players.max} người chơi`;
     el.style.color="#55ff99";
   }catch{
@@ -243,5 +260,3 @@ setInterval(fetchPlayerCount,30000);
 
 </body>
 </html>
-
-
