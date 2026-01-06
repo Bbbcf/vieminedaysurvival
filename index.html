@@ -60,6 +60,45 @@ body{
   transform:translateX(-50%) scale(1);
 }
 
+.popup-bg{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+}
+.popup{
+  background:rgba(20,0,0,.95);
+  border:1px solid #ffd700;
+  border-radius:20px;
+  padding:30px;
+  max-width:420px;
+  width:90%;
+  text-align:center;
+  animation:pop .25s ease;
+}
+@keyframes pop{
+  from{transform:scale(.9);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+.popup h2{
+  color:#ffd700;
+  margin-bottom:12px;
+}
+.popup p{
+  color:#ddd;
+  line-height:1.6;
+  margin-bottom:22px;
+}
+.popup .actions{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
 .container{
   max-width:1100px;
   margin:auto;
@@ -179,6 +218,32 @@ footer{
 
 <div id="toast" class="toast">✅ Đã copy IP server</div>
 
+<div id="notify" class="popup-bg" style="display:none">
+  <div class="popup">
+    <h2>📢 Thông báo</h2>
+    <p>
+      Chào mừng bạn đến với VieMineDay.<br>
+     <p>
+      Phiên Bản Server:Fabric 1.21.4
+      </p>
+      <p>
+      Vui lòng cài mod đúng phiên bản trước khi vào server để tránh lỗi
+      </p>
+      <p>
+      Mấy ní nhớ cài mod khi vô server nha=))
+      </p>
+      <p>
+      theme tết này chat gpt nó code hộ nhé
+      </p>
+      còn lại tui tự làm á mấy ní,hơi 6=))
+    </p>
+    <div class="actions">
+      <button class="btn" onclick="closeNotify()">OK</button>
+      <button class="btn alt" onclick="muteNotify()">Tắt thông báo này 20p</button>
+    </div>
+  </div>
+</div>
+
 <script>
 for(let i=0;i<40;i++){
   const c=document.createElement("div");
@@ -197,7 +262,7 @@ for(let i=0;i<40;i++){
     <p>Server Minecraft cộng đồng • Vui vẻ</p>
 
     <div class="ip" onclick="copyIP('viemineday1.mcsh.io')">
-      Viemineday Cụm Sinh Tồn Fabric 1.21.4 (nhấn để copy ip)
+      Viemineday Cụm Sinh Tồn (nhấn để copy ip)
     </div>
 
     <div id="player-status">⏳ Đang lấy trạng thái server...</div>
@@ -212,8 +277,8 @@ for(let i=0;i<40;i++){
 
   <div class="actions">
     <button class="btn" onclick="copyIP('viemineday1.mcsh.io')">🚀 Vào server</button>
-    <button class="btn alt" onclick="window.open('https://discurd.vercel.app/','_blank')"> Discord</button>
-    <button class="btn alt" onclick="window.location.href='guide.html'"> Xem hướng dẫn</button>
+    <button class="btn alt" onclick="window.open('https://discurd.vercel.app/','_blank')">Discord</button>
+    <button class="btn alt" onclick="window.location.href='guide.html'">Xem hướng dẫn</button>
     <button class="btn alt" onclick="window.open('https://www.mediafire.com/file/c4mykcd3xrox77i/modvieminedaytest.zip/file','_blank')">📥 Tải mod</button>
   </div>
 
@@ -227,6 +292,20 @@ function copyIP(ip){
   const toast=document.getElementById("toast");
   toast.classList.add("show");
   setTimeout(()=>toast.classList.remove("show"),2000);
+}
+
+const notifyKey="notifyMuteUntil";
+const now=Date.now();
+const muteUntil=localStorage.getItem(notifyKey);
+if(!muteUntil||now>muteUntil){
+  document.getElementById("notify").style.display="flex";
+}
+function closeNotify(){
+  document.getElementById("notify").style.display="none";
+}
+function muteNotify(){
+  localStorage.setItem(notifyKey,Date.now()+20*60*1000);
+  closeNotify();
 }
 
 const serverIP="viemineday1.mcsh.io";
@@ -253,4 +332,3 @@ setInterval(fetchPlayerCount,30000);
 
 </body>
 </html>
-
